@@ -1,5 +1,6 @@
 public class BienImmobilier {
 
+    int idBien;
     private int prix;
     private String localistation;
 
@@ -11,5 +12,7 @@ public class BienImmobilier {
         return localistation;
     }
 
-
+    public int getIdBien() {
+        return idBien;
+    }
 }
