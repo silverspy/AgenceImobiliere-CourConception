@@ -1,7 +1,17 @@
-import javafx.scene.media.MediaBuilder;
+
 
 public class Annonce {
- Media media;
+private  Media media;
+private Description description;
 
+public  Annonce(){
+    media=null;
+    this.description=null;
+}
+public Annonce(Media m,Description d){
+    media=m;
+    this.description=d;
+
+}
 }
 

@@ -1,2 +1,3 @@
-public class Media {
+public enum Media {
+    Web,Presse
 }

@@ -42,5 +42,19 @@ public class Agence {
     }
 
 
+    void prendreRDVMandat(){
+        this.listRDV.add(new RDV());
+
+    }
+
+    void inscriptionVente(String nom,String adresse,String tel,String mail){
+
+    }
+    void prendreRDVVente(){
+
+    }
+    void prendreRDVVisite(){
+
+    }
 
 }
