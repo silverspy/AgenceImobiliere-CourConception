@@ -1,13 +1,9 @@
 public class Physique extends Personne {
 
-    String formJuridique;
-    int siren;
-
-    public String getFormJuridique() {
-        return formJuridique;
-    }
-
-    public int getSiren() {
-        return siren;
+    public Physique(String nom,String adresse,String numTel,String eMail){
+        this.nom = nom;
+        this.adresse = adresse;
+        this.numTel = numTel;
+        this.eMail = eMail;
     }
 }

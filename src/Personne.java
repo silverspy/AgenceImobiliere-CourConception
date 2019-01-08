@@ -1,6 +1,6 @@
 public class Personne {
 
-    String nom,adresse,numTel,Email;
+    String nom,adresse,numTel,eMail;
 
     public String getNom() {
         return nom;
@@ -15,6 +15,6 @@ public class Personne {
     }
 
     public String getEmail() {
-        return Email;
+        return eMail;
     }
 }
