@@ -4,12 +4,20 @@ public abstract class Personne {
     private String nom,adresse,numTel,eMail;
     private ArrayList<BienImmobilier> BienAVendre;
     private ArrayList<BienImmobilier> BienAAcheter;
+    private Voeux voeux;
 
     public Personne(String nom, String adresse, String numTel, String eMail) {
         this.nom = nom;
         this.adresse = adresse;
         this.numTel = numTel;
         this.eMail = eMail;
+    }
+
+    /*
+    Ajouter voeux terrain
+     */
+    public void ajouterVoeux(String typeDeBien, String localisation, int prixSouhaité, double surfacesSol){
+
     }
 
     public void AjouterBienAVendre(BienImmobilier bienImmobilier){ // /!\ Verifier que bien pas déja présent
@@ -30,6 +38,14 @@ public abstract class Personne {
 
     public String getNom() {
         return nom;
+    }
+
+    public Voeux getVoeux() {
+        return voeux;
+    }
+
+    public String geteMail() {
+        return eMail;
     }
 
     public String getAdresse() {

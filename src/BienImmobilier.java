@@ -45,4 +45,6 @@ public abstract class BienImmobilier {
         acheteur.AjouterBienAAcheter(this);
         promesseVente = new PromesseVente(acheteur, prix, adresseNotaire, dateVente, fraisDeVente);
     }
+
+    //rajout gestion vente
 }
