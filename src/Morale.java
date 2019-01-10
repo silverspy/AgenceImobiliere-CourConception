@@ -1,7 +1,7 @@
 public class Morale extends Personne {
 
-    String formJuridique;
-    int siren;
+    private String formJuridique;
+    private int siren;
 
     public Morale(String nom, String adresse, String numTel, String eMail, String formJuridique, int siren) {
         super(nom, adresse, numTel, eMail);

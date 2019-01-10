@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public abstract class Personne {
-
     private String nom,adresse,numTel,eMail;
     private ArrayList<BienImmobilier> BienAVendre;
     private ArrayList<BienImmobilier> BienAAcheter;
@@ -19,6 +18,14 @@ public abstract class Personne {
 
     public void AjouterBienAAcheter(BienImmobilier bienImmobilier){ // /!\ Verifier que bien pas déja présent
         BienAAcheter.add(bienImmobilier);
+    }
+
+    public ArrayList<BienImmobilier> getBienAVendre() {
+        return BienAVendre;
+    }
+
+    public ArrayList<BienImmobilier> getBienAAcheter() {
+        return BienAAcheter;
     }
 
     public String getNom() {
