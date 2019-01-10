@@ -6,18 +6,41 @@ public class Agence {
     private List<Annonce> listAnnonce;
     private List<RDV> listRDV;
     private List<BienImmobilier> listBienImmobillier;
+    private List<Personne> listPersonne;
 
     public Agence(ArrayList<Annonce> lA, ArrayList<RDV> lRDV, ArrayList<BienImmobilier> lBI){
-        this.listAnnonce=lA;
+        if(lBI.size()>=1&&lRDV.size()>=1) {
+    	this.listAnnonce=lA;
         this.listBienImmobillier=lBI;
+        for(BienImmobilier b:lBI) {
+        	this.listPersonne.add(b.getVendeur());
+        }
         this.listRDV=lRDV;
+        }else {
+        	if(lRDV.size()<1) {
+        		throw new IllegalArgumentException("Agence initialisee sans rendez vous");
+        	}
+        	if(lBI.size()<1) {
+        		throw new IllegalArgumentException("Agence initialisee sans Bien Immobillier");
+        	}
+        }
     }
+   
+    /*
     public Agence(){
         this.listAnnonce=new ArrayList<>();
         this.listBienImmobillier=new ArrayList<>();
         this.listRDV=new ArrayList<>();
     }
-
+     */
+    
+    ArrayList<Voeux> getlistVoeux() {
+    	ArrayList<Voeux> lsV=new ArrayList<>();
+    	for(Personne p:this.listPersonne) {
+    		lsV.addAll(p.getListVoeux());
+    	}
+    	return lsV;
+    }
     List<Annonce>  getAnnonces(){
         return this.listAnnonce;
     }
