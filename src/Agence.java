@@ -6,14 +6,15 @@ public class Agence {
     private List<Annonce> listAnnonce;
     private List<RDV> listRDV;
     private List<BienImmobilier> listBienImmobillier;
-    private List<Personne> listPersonne;
+    private List<Personne> listPersonneVendeur;
+    private List<Personne> listAcheteurPotentiel;
 
     public Agence(ArrayList<Annonce> lA, ArrayList<RDV> lRDV, ArrayList<BienImmobilier> lBI){
         if(lBI.size()>=1&&lRDV.size()>=1) {
     	this.listAnnonce=lA;
         this.listBienImmobillier=lBI;
         for(BienImmobilier b:lBI) {
-        	this.listPersonne.add(b.getVendeur());
+        	this.listPersonneVendeur.add(b.getVendeur());
         }
         this.listRDV=lRDV;
         }else {
@@ -36,7 +37,7 @@ public class Agence {
     
     ArrayList<Voeux> getlistVoeux() {
     	ArrayList<Voeux> lsV=new ArrayList<>();
-    	for(Personne p:this.listPersonne) {
+    	for(Personne p:this.listAcheteurPotentiel) {
     		lsV.addAll(p.getListVoeux());
     	}
     	return lsV;
@@ -70,8 +71,9 @@ public class Agence {
 
     }
 
-    void inscriptionVente(String nom,String adresse,String tel,String mail){
-
+    void inscriptionVentePersonneMorale(String nom,String adresse,String tel,String mail,String formJuridique, int siren,String type, ){
+    	listPersonneVendeur.add(new Morale(nom,adresse,tel,mail,formJuridique,siren));
+    	this.prendreRDVMandat();
     }
     void prendreRDVVente(){
 

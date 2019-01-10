@@ -46,5 +46,11 @@ public abstract class BienImmobilier {
         promesseVente = new PromesseVente(acheteur, prix, adresseNotaire, dateVente, fraisDeVente);
     }
 
+
+	public Personne getVendeur() {
+		// TODO Auto-generated method stub
+		return this.vendeur;
+	}
+
     //rajout gestion vente
 }

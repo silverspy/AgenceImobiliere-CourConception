@@ -23,8 +23,7 @@ public class RDV {
     			this.vendeur=vend;
     			this.acheteur=achet;
     			this.typeRdv=typeRdv;
-    			b.signerPromesseVente();
-    			//this.prix=prix;
+    			b.signerPromesseDeVente();
 
     		}
     		break;
@@ -32,21 +31,40 @@ public class RDV {
     	}
     }
     
-    public RDV(Date d, BienImmobilier b,Personne vendeur,String typeRdv,Date dVS,Date dateFinMandat) throws IllegalArgumentException{
+    public RDV(Date d, BienImmobilier b,Personne vendeur,String typeRdv,Date dateFinMandat) throws IllegalArgumentException{
     	switch(typeRdv) {
     	
     	case "Mandat":
-    		if(lsP.size()>1) {
+    		if(vendeur!=null) {
     			throw new IllegalArgumentException("Un rendez vous pour signer un mandat ne fait intervenir que le vendeur");
     		}else {
-    			if(lsP.indexOf(b.getVendeur())==-1) {
+    			if(vendeur.equals(b.getVendeur())) {
     				throw new IllegalArgumentException("le vendeur doit faire partie des personnes concernné par le rendez vous de vente");
     			}
     			this.dateRDV=d;
     			this.bien=b;
     			this.vendeur=vendeur;
     			this.typeRdv=typeRdv;
-    			b.signerMandat(dateFinMandat);
+    			b.signermandat(dateFinMandat);
+    		}
+    		break;
+    	}
+    }
+    
+    public RDV(Date d, BienImmobilier b,Personne acheteur,String typeRdv) throws IllegalArgumentException{
+    	switch(typeRdv) {
+    	
+    	case "Visite":
+    		if(acheteur!=null&&b!=null) {
+    			throw new IllegalArgumentException("Une visite necessite un bien immobillier et un acheteur potentiels (non null)");
+    		}else {
+    			if(acheteur.equals(b.getVendeur())) {
+    				throw new IllegalArgumentException("Un vendeur n'as aucun interet a visiter son propre bien");
+    			}
+    			this.dateRDV=d;
+    			this.bien=b;
+    			this.acheteur=acheteur;
+    			this.typeRdv=typeRdv;
     		}
     		break;
     	}
