@@ -7,7 +7,7 @@ public abstract class BienImmobilier {
     private String localistation, orientation;
     private Date dateDeVenteSouhaitee, dateDispo;
     Mandat mandat;
-    Personne vendeur;
+   private  Personne vendeur;
 
     public BienImmobilier(int idBien, int prix, String localistation, Date dateDeVenteSouhaitee, Date dateDispo, String orientation, Personne vendeur) {
         this.idBien = idBien;
@@ -42,4 +42,9 @@ public abstract class BienImmobilier {
     public void signerPromesseDeVente(){
         
     }
+
+	public Personne getVendeur() {
+		// TODO Auto-generated method stub
+		return this.vendeur;
+	}
 }

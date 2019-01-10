@@ -1,3 +1,5 @@
+import java.util.Collection;
+
 public abstract class Personne {
 
     String nom,adresse,numTel,eMail;
@@ -27,7 +29,7 @@ public abstract class Personne {
         return eMail;
     }
 
-	public Collection<? extends Voeux> getListVoeux() {
+	public Collection<Voeux> getListVoeux() {
 		// TODO Auto-generated method stub
 		return null;
 	}
