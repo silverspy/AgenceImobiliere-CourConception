@@ -71,7 +71,7 @@ public class Agence {
 
     }
 
-    void inscriptionVentePersonneMorale(String nom,String adresse,String tel,String mail,String formJuridique, int siren){
+    void inscriptionVentePersonneMorale(String nom,String adresse,String tel,String mail,String formJuridique, int siren,String type, ){
     	listPersonneVendeur.add(new Morale(nom,adresse,tel,mail,formJuridique,siren));
     	this.prendreRDVMandat();
     }
