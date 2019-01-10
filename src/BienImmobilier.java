@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class BienImmobilier {
 
     int idBien;
@@ -15,4 +17,19 @@ public class BienImmobilier {
     public int getIdBien() {
         return idBien;
     }
+
+	public Personne getVendeur() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void signerMandat(Date dateFinMandat) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void signerPromesseVente() {
+		// TODO Auto-generated method stub
+		
+	}
 }
