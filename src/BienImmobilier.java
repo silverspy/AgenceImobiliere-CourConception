@@ -17,6 +17,7 @@ public abstract class BienImmobilier {
         this.dateDispo = dateDispo;
         this.orientation = orientation;
         this.vendeur = vendeur;
+        vendeur.AjouterBienAVendre(this);
     }
 
     public int getPrix() {
@@ -39,7 +40,8 @@ public abstract class BienImmobilier {
         mandat = new Mandat(vendeur, prix, dateDeVenteSouhaitee, dateFinMendat);
     }
 
-    public void signerPromesseDeVente(){
-        
+    public void signerPromesseDeVente(Personne acheteur){
+        acheteur.AjouterBienAAcheter(this);
+
     }
 }

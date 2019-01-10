@@ -1,6 +1,10 @@
+import java.util.ArrayList;
+
 public abstract class Personne {
 
-    String nom,adresse,numTel,eMail;
+    private String nom,adresse,numTel,eMail;
+    private ArrayList<BienImmobilier> BienAVendre;
+    private ArrayList<BienImmobilier> BienAAcheter;
 
     public Personne(String nom, String adresse, String numTel, String eMail) {
         this.nom = nom;
@@ -9,7 +13,13 @@ public abstract class Personne {
         this.eMail = eMail;
     }
 
+    public void AjouterBienAVendre(BienImmobilier bienImmobilier){ // /!\ Verifier que bien pas déja présent
+        BienAVendre.add(bienImmobilier);
+    }
 
+    public void AjouterBienAAcheter(BienImmobilier bienImmobilier){ // /!\ Verifier que bien pas déja présent
+        BienAAcheter.add(bienImmobilier);
+    }
 
     public String getNom() {
         return nom;
@@ -26,9 +36,4 @@ public abstract class Personne {
     public String getEmail() {
         return eMail;
     }
-
-	public Collection<? extends Voeux> getListVoeux() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
