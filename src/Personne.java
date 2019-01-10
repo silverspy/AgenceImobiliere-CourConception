@@ -26,4 +26,9 @@ public abstract class Personne {
     public String getEmail() {
         return eMail;
     }
+
+	public Collection<? extends Voeux> getListVoeux() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

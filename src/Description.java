@@ -1,20 +1,23 @@
+import java.util.ArrayList;
+
 public   class Description {
 
-    private Docs docs;
+    private ArrayList<Docs> docs;
     public Description(Media str){
         if(str.equals(Media.Web)){
-            docs=new DocWeb();
+
         }
         if(str.equals(Media.Presse)){
-            docs=new DocPresse();
+
         }
     }
 
-    public Docs getDoc(){
+    
+    public ArrayList<Docs> getListDoc(){
         return this.docs;
     }
      public void setDoc(Docs d){
-        this.docs=d;
+ 
      }
 
 }
