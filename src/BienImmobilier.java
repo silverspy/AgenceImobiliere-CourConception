@@ -7,7 +7,8 @@ public abstract class BienImmobilier {
     private String localistation, orientation;
     private Date dateDeVenteSouhaitee, dateDispo;
     Mandat mandat;
-   private  Personne vendeur;
+    PromesseVente promesseVente;
+    Personne vendeur;
 
     public BienImmobilier(int idBien, int prix, String localistation, Date dateDeVenteSouhaitee, Date dateDispo, String orientation, Personne vendeur) {
         this.idBien = idBien;
@@ -17,6 +18,7 @@ public abstract class BienImmobilier {
         this.dateDispo = dateDispo;
         this.orientation = orientation;
         this.vendeur = vendeur;
+        vendeur.AjouterBienAVendre(this);
     }
 
     public int getPrix() {
@@ -39,12 +41,16 @@ public abstract class BienImmobilier {
         mandat = new Mandat(vendeur, prix, dateDeVenteSouhaitee, dateFinMendat);
     }
 
-    public void signerPromesseDeVente(){
-        
+    public void signerPromesseDeVente(Personne acheteur, double prix, String adresseNotaire, Date dateVente, Double fraisDeVente){
+        acheteur.AjouterBienAAcheter(this);
+        promesseVente = new PromesseVente(acheteur, prix, adresseNotaire, dateVente, fraisDeVente);
     }
+
 
 	public Personne getVendeur() {
 		// TODO Auto-generated method stub
 		return this.vendeur;
 	}
+
+    //rajout gestion vente
 }
