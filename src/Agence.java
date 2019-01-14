@@ -35,13 +35,8 @@ public class Agence {
     }
      */
     
-    ArrayList<Voeux> getlistVoeux() {
-    	ArrayList<Voeux> lsV=new ArrayList<>();
-    	for(Personne p:this.listAcheteurPotentiel) {
-    		lsV.addAll(p.getListVoeux());
-    	}
-    	return lsV;
-    }
+    /*Voeux getVoeux() {
+    }*/
     List<Annonce>  getAnnonces(){
         return this.listAnnonce;
     }
