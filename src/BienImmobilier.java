@@ -48,7 +48,6 @@ public abstract class BienImmobilier {
 
 
 	public Personne getVendeur() {
-		// TODO Auto-generated method stub
 		return this.vendeur;
 	}
 
