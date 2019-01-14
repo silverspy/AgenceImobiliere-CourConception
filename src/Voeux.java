@@ -1,8 +1,8 @@
 public class Voeux {
 
-    String typeDeBien, localisation;
-    int prixSouhaité, nbPieces;
-    double surfacesSol;
+    private String typeDeBien, localisation;
+    private int prixSouhaité, nbPieces;
+    private double surfacesSol;
 
     /*
         Constructeur pour un terrain

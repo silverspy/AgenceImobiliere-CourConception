@@ -32,6 +32,10 @@ public abstract class Personne {
         BienAAcheter.add(bienImmobilier);
     }
 
+    public void AjoutVoeux(Voeux voeux) {
+        this.voeux = voeux;
+    }
+
     public ArrayList<BienImmobilier> getBienAVendre() {
         return BienAVendre;
     }
