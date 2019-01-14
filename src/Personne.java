@@ -20,20 +20,24 @@ public abstract class Personne {
     /*
     Ajouter voeux terrain
      */
-    public void ajouterVoeux(String typeDeBien, String localisation, int prixSouhaité, double surfacesSol){
-
+    public void ajouterVoeux(String typeDeBien, String localisation, int prixSouhaité, double surfacesSol) throws IllegalArgumentException{
+        voeux = new Voeux(typeDeBien, localisation,prixSouhaité, surfacesSol);
     }
 
-    public void AjouterBienAVendre(BienImmobilier bienImmobilier){ // /!\ Verifier que bien pas déja présent
+    public void ajouterVoeux(String typeDeBien, String localisation, int prixSouhaité, int nbPieces, double surfacesSol) throws IllegalArgumentException{
+        voeux = new Voeux(typeDeBien, localisation, prixSouhaité, nbPieces,surfacesSol);
+    }
+
+    public void ajouterVoeux(String typeDeBien, String localisation, int prixSouhaité, int nbPieces) throws IllegalArgumentException{
+        voeux = new Voeux(typeDeBien, localisation, prixSouhaité, nbPieces);
+    }
+
+    public void AjouterBienAVendre(BienImmobilier bienImmobilier){
         BienAVendre.add(bienImmobilier);
     }
 
     public void AjouterBienAAcheter(BienImmobilier bienImmobilier){ // /!\ Verifier que bien pas déja présent
         BienAAcheter.add(bienImmobilier);
-    }
-
-    public void AjoutVoeux(Voeux voeux) {
-        this.voeux = voeux;
     }
 
     public ArrayList<BienImmobilier> getBienAVendre() {
