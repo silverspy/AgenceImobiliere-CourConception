@@ -51,7 +51,7 @@ public class RDV {
     	}
     }
     
-    public RDV(Date d, BienImmobilier b,Personne acheteur,String typeRdv) throws IllegalArgumentException{
+    public RDV(Date d, BienImmobilier b,String typeRdv,Personne acheteur) throws IllegalArgumentException{
     	switch(typeRdv) {
     	
     	case "Visite":
