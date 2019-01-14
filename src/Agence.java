@@ -121,13 +121,36 @@ public class Agence {
     	this.prendreRDVMandat(dateRDV,b,p,dateFinMandat);
     }
     
-    void inscriptionPersonneInterresséTerrainPhysique(String nom,String adresse,String tel,String mail,int prix, String localistation, Date dateDeVenteSouhaitee, Date dateDispo, String orientation,  double surfacesSol, double longueurFacade) {
+    void inscriptionPersonneInterresséTerrainPhysique(String nom,String adresse,String tel,String mail,int prix, String localistation, double surfacesSol) {
     	Personne p=new Physique(nom,adresse,tel,mail);
-    	listAcheteurPotentiel.add(p);
-    	this.lastIdVoeux=this.lastIdVoeux+1;
-    	BienImmobilier b=new Terrain(this.lastIdVoeux,prix,localistation,dateDeVenteSouhaitee,dateDispo,orientation,p,surfacesSol,longueurFacade);
-    	p.AjouterBienAVendre(b);
-    	this.prendreRDVMandat(dateRDV,b,p,dateFinMandat);
+    	listAcheteurPotentiel.add(p);  
+    	p.AjouterVoeuxTerrain("terrain",localistation,prix,surfacesSol);
+    }
+    void inscriptionPersonneInterresséAppartPhysique(String nom,String adresse,String tel,String mail,int prix, String localistation, int nbPieces) {
+    	Personne p=new Physique(nom,adresse,tel,mail);
+    	listAcheteurPotentiel.add(p);  
+    	p.AjouterVoeuxTerrain("appart",localistation,prix,nbPieces);
+    }
+    void inscriptionPersonneInterresséMaisonPhysique(String nom,String adresse,String tel,String mail,int prix, String localistation, int nbPieces,double surfacesSol) {
+    	Personne p=new Physique(nom,adresse,tel,mail);
+    	listAcheteurPotentiel.add(p);  
+    	p.AjouterVoeuxTerrain("maison",localistation,prix,nbPieces,surfacesSol);
+    }
+    
+    void inscriptionPersonneInterresséTerrainMorale(String nom,String adresse,String tel,String mail,String formJuridique, int siren,int prix, String localistation, double surfacesSol) {
+    	Personne p=new Physique(nom,adresse,tel,mail);
+    	listAcheteurPotentiel.add(p);  
+    	p.AjouterVoeuxTerrain("terrain",localistation,prix,surfacesSol);
+    }
+    void inscriptionPersonneInterresséAppartMorale(String nom,String adresse,String tel,String mail,String formJuridique, int siren,int prix, String localistation, int nbPieces) {
+    	Personne p=new Physique(nom,adresse,tel,mail);
+    	listAcheteurPotentiel.add(p);  
+    	p.AjouterVoeuxTerrain("appart",localistation,prix,nbPieces);
+    }
+    void inscriptionPersonneInterresséMaisonMorale(String nom,String adresse,String tel,String mail,String formJuridique, int siren,int prix, String localistation, int nbPieces,double surfacesSol) {
+    	Personne p=new Physique(nom,adresse,tel,mail);
+    	listAcheteurPotentiel.add(p);  
+    	p.AjouterVoeuxTerrain("maison",localistation,prix,nbPieces,surfacesSol);
     }
     void prendreRDVVente(){
 
