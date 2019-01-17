@@ -175,5 +175,8 @@ public class Agence {
     void prendreRDVVisite(){
 
     }
+    public  static  void main(){
+
+    }
     
 }

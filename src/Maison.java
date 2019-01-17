@@ -21,6 +21,7 @@ public class Maison extends BienImmobilier {
         this.nbEtages = nbEtages;
         this.surfaceSol = surfaceSol;
         this.longueurFacade = longueurFacade;
+        this.
     }
 
     public int getNbPieces() {
