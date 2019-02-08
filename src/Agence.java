@@ -121,16 +121,23 @@ public class Agence {
     	this.prendreRDVMandat(dateRDV,b,p,dateFinMandat);
     }
     
+    void prendreRDVVisite(){
+
+    }
+    
+    
     void inscriptionPersonneInterresséTerrainPhysique(String nom,String adresse,String tel,String mail,int prix, String localistation, double surfacesSol) {
     	Personne p=new Physique(nom,adresse,tel,mail);
     	listAcheteurPotentiel.add(p);  
     	p.AjouterVoeuxTerrain("terrain",localistation,prix,surfacesSol);
     }
+    
     void inscriptionPersonneInterresséAppartPhysique(String nom,String adresse,String tel,String mail,int prix, String localistation, int nbPieces) {
     	Personne p=new Physique(nom,adresse,tel,mail);
     	listAcheteurPotentiel.add(p);  
     	p.AjouterVoeuxTerrain("appart",localistation,prix,nbPieces);
     }
+    
     void inscriptionPersonneInterresséMaisonPhysique(String nom,String adresse,String tel,String mail,int prix, String localistation, int nbPieces,double surfacesSol) {
     	Personne p=new Physique(nom,adresse,tel,mail);
     	listAcheteurPotentiel.add(p);  
@@ -142,21 +149,34 @@ public class Agence {
     	listAcheteurPotentiel.add(p);  
     	p.AjouterVoeuxTerrain("terrain",localistation,prix,surfacesSol);
     }
+    
     void inscriptionPersonneInterresséAppartMorale(String nom,String adresse,String tel,String mail,String formJuridique, int siren,int prix, String localistation, int nbPieces) {
     	Personne p=new Physique(nom,adresse,tel,mail);
     	listAcheteurPotentiel.add(p);  
     	p.AjouterVoeuxTerrain("appart",localistation,prix,nbPieces);
     }
+    
     void inscriptionPersonneInterresséMaisonMorale(String nom,String adresse,String tel,String mail,String formJuridique, int siren,int prix, String localistation, int nbPieces,double surfacesSol) {
     	Personne p=new Physique(nom,adresse,tel,mail);
     	listAcheteurPotentiel.add(p);  
     	p.AjouterVoeuxTerrain("maison",localistation,prix,nbPieces,surfacesSol);
+    	Voeux v=p.getVoeux();
+    	
     }
-    void prendreRDVVente(){
+    
 
+    void checkVoeux(Voeux v,String type) {
+    	boolean localisationOK;
+    	boolean prix;
+    }
+    void checkVoeux() {
+    	
     }
     void prendreRDVVisite(){
 
     }
+    public  static  void main(){
 
+    }
+    
 }
