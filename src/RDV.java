@@ -23,8 +23,6 @@ public class RDV {
     			this.vendeur=vend;
     			this.acheteur=achet;
     			this.typeRdv=typeRdv;
-    			b.signerPromesseDeVente();
-
     		}
     		break;
 

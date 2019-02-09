@@ -168,6 +168,92 @@ public class Agence {
 		
 	}
     /**
+     * Menu de l'application en ligne de commande
+     */
+    public void Menu() {
+    	System.out.println("Bienvenue sur le menu de l'application");
+    	String menu="**********************\n";
+    	menu+="I- Inscription d une personne pour une vente\n";
+    	menu+="A- Inscription d'une personne interresé par un achat";
+    	menu+="Q- Quitter";
+    	boolean fin=false;
+    	while(fin==false) {
+    		System.out.println(menu);
+    		Scanner sc=new Scanner(System.in);
+    		String str=sc.nextLine();
+    		switch(str) {
+    		case "I":
+    			this.menuInscriptionVente();
+    			break;
+    		case "A":
+    			this.menuAchat();
+    			break;
+    		case "Q":
+    			fin=true;
+    			break;
+    		default:
+    			System.out.println("error rentrez une des lettres du menu");
+    		}
+    	}
+    }
+    private void menuInscriptionVente() {
+		// TODO Auto-generated method stub
+    	System.out.println("Bienvenue sur le menu d'Inscription a la vente");
+    	String menu="**********************\n";
+    	menu+="Mt- I²										nscription d une personne morale pour un terrain";
+    	menu+="Mm- Inscription d une personne morale pour une maison";
+    	menu+="Ma- Inscription d une personne morale pour un Appartement";
+    	menu+="Pt- Inscription d'une personne Physique pour un terrain";
+    	menu+="Pa- Inscription d'une personne Physique pour un appartement";
+    	menu+="Pm- Inscription d'une personne Physique pour une maison";
+    	menu+="Q- Quitter";
+    	boolean fin=false;
+    	while(fin==false) {
+    		System.out.println(menu);
+    		Scanner sc=new Scanner(System.in);
+    		String str=sc.nextLine();
+    		switch(str) {
+    		case "Pa":
+    			String nom=this.enterString("nom");
+    			String adresse=this.enterString("adresse");
+    			String mail=this.enterString("mail");
+    			String localisation=this.enterString("localisation du bien");
+    			Date dateDispo=this.entrerDate();
+    			int nbPieces=this.enterInt("nbPieces");
+    			
+    			break;
+    		case "Ma":
+    			
+    			break;
+    		case "Pt":
+    			
+    			break;
+    		case "Mt":
+    			
+    			break;
+    		case "Pm":
+    			
+    			break;
+    		case "Mm":
+    			
+    			break;
+    		case "Q":
+    			fin=true;
+    			break;
+    		default:
+    			System.out.println("error rentrez une des lettres du menu");
+    		}
+    	}
+	}
+
+	private int enterInt(String string) {
+		// TODO Auto-generated method stub
+		Scanner s=new Scanner(System.in);
+		int k=-1;
+		return 0;
+	}
+
+	/**
      * teste parmis la liste des acheteurs potentiels si son voeux correspond au nouveau bien
      * si cela correspond un rendez vous pour une visite est pris
      * @param b le bien Immobillier
@@ -181,16 +267,19 @@ public class Agence {
     	int borneHaute=0;
     	Voeux v=new Voeux();
     	for(Personne p:this.listAcheteurPotentiel) {
-    		v=p.getVoeux();
-    		if(m.getLocalistation()==v.getLocalisation()&&m.getNbEtages()==v.getNbPieces()&&m.getSurfaceSol()==v.getSurfacesSol()) {
-    			borneBasse=v.getPrixSouhaité();
-    			borneBasse=borneBasse-(borneBasse/10);
-    			borneHaute=v.getPrixSouhaité();
-    			borneHaute=borneHaute+(borneHaute/10);
-    			if(m.getPrix()>=borneBasse&&m.getPrix()<=borneHaute) {
-    				Date d=entrerDate();
-    				this.prendreRDVVisite(p, b, d);
-    			}
+    		if(p.getBienSoumis().indexOf(b)==-1) {
+        		v=p.getVoeux();
+        		if(m.getLocalistation()==v.getLocalisation()&&m.getNbEtages()==v.getNbPieces()&&m.getSurfaceSol()==v.getSurfacesSol()) {
+        			borneBasse=v.getPrixSouhaité();
+        			borneBasse=borneBasse-(borneBasse/10);
+        			borneHaute=v.getPrixSouhaité();
+        			borneHaute=borneHaute+(borneHaute/10);
+        			if(m.getPrix()>=borneBasse&&m.getPrix()<=borneHaute) {
+        				Date d=entrerDate();
+        				p.getBienSoumis().add(b);
+        				this.prendreRDVVisite(p, b, d);
+        			}
+        		}
     		}
     	}
 		
@@ -208,7 +297,6 @@ public class Agence {
     	SimpleDateFormat dateFormat=new SimpleDateFormat("dd-MMM-yyyy");
     	boolean dateOk=false;
     	while(dateOk==false) {
-    		System.out.println("Taper la date du RDV");
     		st=s.nextLine();
     		try {
     			d=dateFormat.parse(st);
@@ -240,16 +328,19 @@ public class Agence {
     	int borneHaute=0;
     	Voeux v=new Voeux();
     	for(Personne p:this.listAcheteurPotentiel) {
-    		v=p.getVoeux();
-    		if(a.getLocalistation()==v.getLocalisation()&&a.getNbPieces()==v.getNbPieces()) {
-    			borneBasse=v.getPrixSouhaité();
-    			borneBasse=borneBasse-(borneBasse/10);
-    			borneHaute=v.getPrixSouhaité();
-    			borneHaute=borneHaute+(borneHaute/10);
-    			if(a.getPrix()>=borneBasse&&a.getPrix()<=borneHaute) {
-    				Date d=entrerDate();
-    				this.prendreRDVVisite(p, b, d);
-    			}
+    		if(p.getBienSoumis().indexOf(b)==-1) {
+        		v=p.getVoeux();
+        		if(a.getLocalistation()==v.getLocalisation()&&a.getNbPieces()==v.getNbPieces()) {
+        			borneBasse=v.getPrixSouhaité();
+        			borneBasse=borneBasse-(borneBasse/10);
+        			borneHaute=v.getPrixSouhaité();
+        			borneHaute=borneHaute+(borneHaute/10);
+        			if(a.getPrix()>=borneBasse&&a.getPrix()<=borneHaute) {
+        				Date d=entrerDate();
+        				p.getBienSoumis().add(b);
+        				this.prendreRDVVisite(p, b, d);
+        			}
+        		}
     		}
     	}
 	}
@@ -267,16 +358,19 @@ public class Agence {
     	int borneHaute=0;
     	Voeux v=new Voeux();
     	for(Personne p:this.listAcheteurPotentiel) {
-    		v=p.getVoeux();
-    		if(t.getLocalistation()==v.getLocalisation()&&t.getSurfacesSol()==v.getSurfacesSol()) {
-    			borneBasse=v.getPrixSouhaité();
-    			borneBasse=borneBasse-(borneBasse/10);
-    			borneHaute=v.getPrixSouhaité();
-    			borneHaute=borneHaute+(borneHaute/10);
-    			if(t.getPrix()>=borneBasse&&t.getPrix()<=borneHaute) {
-    				Date d=entrerDate();
-    				this.prendreRDVVisite(p, b, d);
-    			}
+    		if(p.getBienSoumis().indexOf(t)==-1){
+    			v=p.getVoeux();
+        		if(t.getLocalistation()==v.getLocalisation()&&t.getSurfacesSol()==v.getSurfacesSol()) {
+        			borneBasse=v.getPrixSouhaité();
+        			borneBasse=borneBasse-(borneBasse/10);
+        			borneHaute=v.getPrixSouhaité();
+        			borneHaute=borneHaute+(borneHaute/10);
+        			if(t.getPrix()>=borneBasse&&t.getPrix()<=borneHaute) {
+        				Date d=entrerDate();
+        				p.getBienSoumis().add(b);
+        				this.prendreRDVVisite(p, b, d);
+        			}
+        		}	
     		}
     	}
 		
@@ -298,20 +392,64 @@ public class Agence {
     			Date dateVente=entrerDate();
     			Double fraisDeVente=entrerFraisDeVente();
     			b.signerPromesseDeVente(acheteur, b.getPrix(), adresseNotaire, dateVente, fraisDeVente);
-    			this.prendreRDVAchat();
+    			this.prendreRDVAchat(dateVente,b,p,b.getVendeur(),"Vente");
     		}
     	}
     	
     }
     /**
      * methode permettant de prendre un rdv Achat pour un bien immobilier et de l ajouter a la liste des biens immobiliers de l'agence
+     * @param string 
+     * @param personne 
+     * @param p 
+     * @param b 
+     * @param dateVente 
      */
-	private void prendreRDVAchat() {
+	private void prendreRDVAchat(Date dateVente, BienImmobilier b, Personne p, Personne personne, String string) {
 		// TODO Auto-generated method stub
-		
+		this.listRDV.add(new RDV(dateVente,b,p,personne,string));
+		System.out.println("la vente a été conclue o/n");
+		String rep=this.getConclusionVente();
+		if(rep=="o") {
+			this.conclureVente(b,p);
+		}else {
+			this.checkVoeux(b);
+			System.out.print("vente annulé");
+		}
 	}
 	
-	 /**
+	 /**Fonction permettant de recuperer la conclusion ou l'annulation de la vente
+	 * @return rep la conclusion de la vente
+	 */
+	private String getConclusionVente() {
+		// TODO Auto-generated method stub
+		 Scanner s=new Scanner(System.in);
+		 String rep=s.nextLine();
+		 boolean k=false;
+		 while(k==false) {
+			 if(rep.equals("o")||rep.equals("n")) {
+				 k=true;
+			 }else {
+				 s=new Scanner(System.in);
+				 System.out.println("error vous devez valider o ou annuler n la vente");
+				 rep=s.nextLine();
+			 }
+		 }
+		return rep;
+	}
+
+	/**
+	 * Fonction concluant la vente.Elle change le proprietaire du bien immobilier et retire le bien immobilier de la liste des bien a vendre
+	 * @param b
+	 * @param p
+	 */
+	private void conclureVente(BienImmobilier b, Personne p) {
+		// TODO Auto-generated method stub
+		b.vendeur=p;
+		this.listBienImmobillier.remove(b);
+	}
+
+	/**
 	  * methode permettant d'entrer les frais de ventes pour une vente
 	  * @return d double
      */
@@ -360,7 +498,7 @@ public class Agence {
      * @see Appart
      * @see Agence#checkVoeux(BienImmobilier)
      */
-	void inscriptionVenteAppartPersonneMorale(String nom,String adresse,String tel,String mail,String formJuridique, int siren, int prix, String localistation, Date dateDeVenteSouhaitee, Date dateDispo, String orientation, Personne vendeur, int nbPieces, int etages, double charges,Date dateFinMandat,Date dateRDV){
+	void inscriptionVenteAppartPersonneMorale(String nom,String adresse,String tel,String mail,String formJuridique, int siren, int prix, String localistation, Date dateDeVenteSouhaitee, Date dateDispo, String orientation, int nbPieces, int etages, double charges,Date dateFinMandat,Date dateRDV){
     	Personne p=new Morale(nom,adresse,tel,mail,formJuridique,siren);
     	listPersonneVendeur.add(p);
     	this.lastId=this.lastId+1;
@@ -383,7 +521,6 @@ public class Agence {
      * @param dateDeVenteSouhaitee la date de vente souhaité du bien
      * @param dateDispo la date a partir du quel le bien est disponible
      * @param orientation l'orientation du bien
-     * @param vendeur le vendeur du bien
      * @param nbPieces le nombre de piece de la maison
      * @param nbEtages le nombre d 'étage de la maison
      * @param surfaceSol la surface au sol de la maison
@@ -395,7 +532,7 @@ public class Agence {
      * @see Maison
      * @see Agence#checkVoeux(BienImmobilier)
      */
-    void inscriptionVenteMaisonPersonneMorale(String nom,String adresse,String tel,String mail,String formJuridique, int siren, int prix, String localistation, Date dateDeVenteSouhaitee, Date dateDispo, String orientation, Personne vendeur, int nbPieces, int nbEtages, double surfaceSol, double longueurFacade, String moyenDeChauffages,Date dateFinMandat,Date dateRDV){
+    void inscriptionVenteMaisonPersonneMorale(String nom,String adresse,String tel,String mail,String formJuridique, int siren, int prix, String localistation, Date dateDeVenteSouhaitee, Date dateDispo, String orientation, int nbPieces, int nbEtages, double surfaceSol, double longueurFacade, String moyenDeChauffages,Date dateFinMandat,Date dateRDV){
     	Personne p=new Morale(nom,adresse,tel,mail,formJuridique,siren);
     	listPersonneVendeur.add(p);
     	this.lastId=this.lastId+1;
@@ -448,7 +585,6 @@ public class Agence {
      * @param dateDeVenteSouhaitee la date de vente souhaité du bien
      * @param dateDispo la date a partir du quel le bien est disponible
      * @param orientation l'orientation du bien
-     * @param vendeur le vendeur du bien
      * @param nbPieces le nombre de pieces de l'appartement
      * @param etages l'etage de l'appartement
      * @param charges les charges du bien
@@ -458,7 +594,7 @@ public class Agence {
      * @see Appart
      * @see Agence#checkVoeux(BienImmobilier)
      */
-    void inscriptionVenteAppartPersonne(String nom,String adresse,String tel,String mail, int prix, String localistation, Date dateDeVenteSouhaitee, Date dateDispo, String orientation, Personne vendeur, int nbPieces, int etages, double charges,Date dateFinMandat,Date dateRDV){
+    void inscriptionVenteAppartPersonne(String nom,String adresse,String tel,String mail, int prix, String localistation, Date dateDeVenteSouhaitee, Date dateDispo, String orientation, int nbPieces, int etages, double charges,Date dateFinMandat,Date dateRDV){
     	Personne p=new Physique(nom,adresse,tel,mail);
     	listPersonneVendeur.add(p);
     	this.lastId=this.lastId+1;
@@ -597,8 +733,21 @@ public class Agence {
     	listAcheteurPotentiel.add(p);  
     	p.ajouterVoeux("appart",localistation,prix,nbPieces);
     }
-    /**
-     * methode pour inscrire une personne interresé par un terrain
+    private String enterString(String nom) {
+    	Scanner s=new Scanner(System.in);
+    	boolean fin=false;
+    	String re="";
+    	while(fin==false) {
+    		System.out.println("Entrer "+nom);
+    		re=s.nextLine();
+    		if(!re.equals(null)&&!re.equals("")) {
+    			fin=true;
+    		}
+    	}
+    	return re;
+    }
+    /**    
+ * methode pour inscrire une personne interresé par un terrain
      * @param nom
      * @param adresse
      * @param tel

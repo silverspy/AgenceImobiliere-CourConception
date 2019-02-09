@@ -12,6 +12,7 @@ public abstract class Personne {
     private String nom,adresse,numTel,eMail;
     private ArrayList<BienImmobilier> BienAVendre;
     private ArrayList<BienImmobilier> BienAAcheter;
+    private ArrayList<BienImmobilier> BienSoumis;
     private Voeux voeux;
 
     /** initialise une personne avec les attributs suivants
@@ -25,6 +26,9 @@ public abstract class Personne {
         this.adresse = adresse;
         this.numTel = numTel;
         this.eMail = eMail;
+        this.BienAAcheter=new ArrayList<>();
+        this.BienAVendre=new ArrayList<>();
+        this.BienSoumis=new ArrayList<>();
     }
 
     /*
@@ -114,5 +118,10 @@ public abstract class Personne {
     public String getEmail() {
         return eMail;
     }
-
+    /**getteur la liste de bienSoumis
+     * @return BienSoumis la liste de bien soumis a la personne
+     */
+    public ArrayList<BienImmobilier> getBienSoumis(){
+    	return this.BienSoumis;
+    }
 }
