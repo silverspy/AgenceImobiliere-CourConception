@@ -124,4 +124,8 @@ public abstract class Personne {
     public ArrayList<BienImmobilier> getBienSoumis(){
     	return this.BienSoumis;
     }
+    public String toString() {
+    	String s="Personne \n"+this.nom+","+this.adresse+","+this.eMail;
+    	return s;
+    }
 }
