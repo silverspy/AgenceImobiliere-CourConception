@@ -1,5 +1,11 @@
 import java.util.Date;
 
+/**
+ * classe abstraite Bien Immobilier .Un bien Immobilier comporte un id,un prix,une localisation,une orientation
+ * une Date de vente souhaité une date de disponibilité ainsi qu'un mandat pour autorisé les visites ,une promesse de vente
+ * et un propriétaire/vendeur
+ *
+ */
 public abstract class BienImmobilier {
 
     int idBien;
@@ -10,6 +16,15 @@ public abstract class BienImmobilier {
     PromesseVente promesseVente;
     Personne vendeur;
 
+    /**Constructeur d un bien immobilier avec les attributs suivants
+     * @param idBien
+     * @param prix
+     * @param localistation
+     * @param dateDeVenteSouhaitee
+     * @param dateDispo
+     * @param orientation
+     * @param vendeur
+     */
     public BienImmobilier(int idBien, int prix, String localistation, Date dateDeVenteSouhaitee, Date dateDispo, String orientation, Personne vendeur) {
         this.idBien = idBien;
         this.prix = prix;
@@ -21,32 +36,59 @@ public abstract class BienImmobilier {
         vendeur.AjouterBienAVendre(this);
     }
 
+    /**
+     * @return prix le prix du bien Immobilier
+     */
     public int getPrix() {
         return prix;
     }
 
+    /**
+     * @return localisation La localisation du bien Immobilier
+     */
     public String getLocalistation() {
         return localistation;
     }
 
+    /**
+     * @return idBien l'identifiant du bien
+     */
     public int getIdBien() {
         return idBien;
     }
 
+    /**
+     * Inscrit le bien immobilier a la vente
+     */
     public void inscrire(){
 
     }
 
+    /**
+     * Ajoute le mandat au bien Immobilier necessite la date de fin de mandat
+     * @param dateFinMendat
+     */
     public void signermandat(Date dateFinMendat){
         mandat = new Mandat(vendeur, prix, dateDeVenteSouhaitee, dateFinMendat);
     }
 
+    /**
+     * Ajoute une promesse de fin de vente au bien Immobilier necessite les parametres suivants
+     * @param acheteur le futur acheteur du bien
+     * @param prix le prix du bien 
+     * @param adresseNotaire l'adresse du notaire qui signe la promesse de vente
+     * @param dateVente date de vente du bien immobilier
+     * @param fraisDeVente frais de vente
+     */
     public void signerPromesseDeVente(Personne acheteur, double prix, String adresseNotaire, Date dateVente, Double fraisDeVente){
         acheteur.AjouterBienAAcheter(this);
         promesseVente = new PromesseVente(acheteur, prix, adresseNotaire, dateVente, fraisDeVente);
     }
 
 
+	/**retourne le vendeur/propriétaire du bien
+	 * @return
+	 */
 	public Personne getVendeur() {
 		return this.vendeur;
 	}
