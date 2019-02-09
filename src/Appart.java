@@ -42,6 +42,7 @@ public class Appart extends BienImmobilier {
      * @param nbPieces
      * @param etages
      */
+
     public Appart(int idBien, int prix, String localistation, Date dateDeVenteSouhaitee, Date dateDispo, String orientation, Personne vendeur, int nbPieces, int etages) {
         super(idBien, prix, localistation, dateDeVenteSouhaitee, dateDispo, orientation, vendeur);
         this.setNbPieces(nbPieces);
@@ -61,4 +62,32 @@ public class Appart extends BienImmobilier {
 	public void setNbPieces(int nbPieces) {
 		this.nbPieces = nbPieces;
 	}
+
+	/** getEtages
+	* @return etages
+    **/
+    public int getNbEtages() {
+        return etages;
+    }
+
+    /** get les charges
+     * @return  Charges
+     */
+    public double getCharges() {
+        return charges;
+    }
+
+    /** set etages
+     * @param etages
+     */
+    public void setEtages(int etages) {
+        this.etages = etages;
+    }
+
+    /** set les charges
+     * @param charges
+     */
+    public void setCharges(double charges) {
+        this.charges = charges;
+    }
 }

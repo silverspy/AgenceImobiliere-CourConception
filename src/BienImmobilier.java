@@ -1,3 +1,4 @@
+import java.security.InvalidParameterException;
 import java.util.Date;
 
 /**
@@ -33,7 +34,7 @@ public abstract class BienImmobilier {
         this.dateDispo = dateDispo;
         this.orientation = orientation;
         this.vendeur = vendeur;
-        vendeur.AjouterBienAVendre(this);
+        this.vendeur.AjouterBienAVendre(this);
     }
 
     /**
@@ -67,9 +68,22 @@ public abstract class BienImmobilier {
     /**
      * Ajoute le mandat au bien Immobilier necessite la date de fin de mandat
      * @param dateFinMendat
+     * @throws InvalidParameterException Mandat already exist if bienImmobilier have already a mandat
      */
     public void signermandat(Date dateFinMendat){
-        mandat = new Mandat(vendeur, prix, dateDeVenteSouhaitee, dateFinMendat);
+        if (mandat == null) {
+            mandat = new Mandat(vendeur, prix, dateDeVenteSouhaitee, dateFinMendat);
+        } else {
+            throw new InvalidParameterException("Mandat already exist");
+        }
+    }
+
+    /** retourne le mandat si présent
+     * @return mandat si présent
+     * @throws InvalidParameterException Mandat already exist if bienImmobilier have already a mandat
+     */
+    public Mandat getMandat() {
+        return mandat;
     }
 
     /**
@@ -85,8 +99,14 @@ public abstract class BienImmobilier {
         promesseVente = new PromesseVente(acheteur, prix, adresseNotaire, dateVente, fraisDeVente);
     }
 
+    /** retourne la promesse de vente
+     * @return promesseVente
+     */
+    public PromesseVente getPromesseVente() {
+        return promesseVente;
+    }
 
-	/**retourne le vendeur/propriétaire du bien
+    /**retourne le vendeur/propriétaire du bien
 	 * @return
 	 */
 	public Personne getVendeur() {

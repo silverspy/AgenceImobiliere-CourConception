@@ -10,8 +10,8 @@ import java.util.ArrayList;
  */
 public abstract class Personne {
     private String nom,adresse,numTel,eMail;
-    private ArrayList<BienImmobilier> BienAVendre;
-    private ArrayList<BienImmobilier> BienAAcheter;
+    private ArrayList<BienImmobilier> BienAVendre = new ArrayList<>();
+    private ArrayList<BienImmobilier> BienAAcheter = new ArrayList<>();
     private Voeux voeux;
 
     /** initialise une personne avec les attributs suivants
@@ -47,7 +47,7 @@ public abstract class Personne {
      * setteur de la liste de bien Immobilier ajoute le bienImmobilier passé en parametre a la liste
      * @param bienImmobilier le bien immobilier a ajouter
      */
-    public void AjouterBienAVendre(BienImmobilier bienImmobilier){ // /!\ Verifier que bien pas déja présent
+    public void AjouterBienAVendre(BienImmobilier bienImmobilier){
         BienAVendre.add(bienImmobilier);
     }
 

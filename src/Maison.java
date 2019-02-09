@@ -5,7 +5,6 @@ import java.util.Date;
  *le nombre de pieces ,le nombre d'étages la surface au sol ,la longueure de la facade et le moyen de chauffage
  */
 public class Maison extends BienImmobilier {
-public abstract class Maison extends BienImmobilier {
 
     private int nbPieces, nbEtages;
     private double surfaceSol ,longueurFacade;
