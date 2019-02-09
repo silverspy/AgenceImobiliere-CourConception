@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class Maison extends BienImmobilier {
+public abstract class Maison extends BienImmobilier {
 
     private int nbPieces, nbEtages;
     private double surfaceSol ,longueurFacade;
@@ -13,15 +13,6 @@ public class Maison extends BienImmobilier {
         this.surfaceSol = surfaceSol;
         this.longueurFacade = longueurFacade;
         this.moyenDeChauffages = moyenDeChauffages;
-    }
-
-    public Maison(int idBien, int prix, String localistation, Date dateDeVenteSouhaitee, Date dateDispo, String orientation, Personne vendeur, int nbPieces, int nbEtages, double surfaceSol, double longueurFacade) {
-        super(idBien, prix, localistation, dateDeVenteSouhaitee, dateDispo, orientation, vendeur);
-        this.nbPieces = nbPieces;
-        this.nbEtages = nbEtages;
-        this.surfaceSol = surfaceSol;
-        this.longueurFacade = longueurFacade;
-        this.
     }
 
     public int getNbPieces() {
