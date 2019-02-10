@@ -1,3 +1,9 @@
+package BienImmobilier;
+
+import Agence.Mandat;
+import Agence.PromesseVente;
+import Personne.Personne;
+
 import java.security.InvalidParameterException;
 import java.util.Date;
 
@@ -5,7 +11,6 @@ import java.util.Date;
  * classe abstraite Bien Immobilier .Un bien Immobilier comporte un id,un prix,une localisation,une orientation
  * une Date de vente souhaité une date de disponibilité ainsi qu'un mandat pour autorisé les visites ,une promesse de vente
  * et un propriétaire/vendeur
- *
  */
 public abstract class BienImmobilier {
 
@@ -15,9 +20,11 @@ public abstract class BienImmobilier {
     private Date dateDeVenteSouhaitee, dateDispo;
     Mandat mandat;
     PromesseVente promesseVente;
-    Personne vendeur;
+    public Personne vendeur;
 
-    /**Constructeur d un bien immobilier avec les attributs suivants
+    /**
+     * Constructeur d un bien immobilier avec les attributs suivants
+     *
      * @param idBien
      * @param prix
      * @param localistation
@@ -61,26 +68,29 @@ public abstract class BienImmobilier {
     /**
      * Inscrit le bien immobilier a la vente
      */
-    public void inscrire(){
+    public void inscrire() {
 
     }
 
     /**
      * Ajoute le mandat au bien Immobilier necessite la date de fin de mandat
+     *
      * @param dateFinMendat
-     * @throws InvalidParameterException Mandat already exist if bienImmobilier have already a mandat
+     * @throws InvalidParameterException Agence.Mandat already exist if bienImmobilier have already a mandat
      */
-    public void signermandat(Date dateFinMendat){
+    public void signermandat(Date dateFinMendat) {
         if (mandat == null) {
             mandat = new Mandat(vendeur, prix, dateDeVenteSouhaitee, dateFinMendat);
         } else {
-            throw new InvalidParameterException("Mandat already exist");
+            throw new InvalidParameterException("Agence.Mandat already exist");
         }
     }
 
-    /** retourne le mandat si présent
+    /**
+     * retourne le mandat si présent
+     *
      * @return mandat si présent
-     * @throws InvalidParameterException Mandat already exist if bienImmobilier have already a mandat
+     * @throws InvalidParameterException Agence.Mandat already exist if bienImmobilier have already a mandat
      */
     public Mandat getMandat() {
         return mandat;
@@ -88,35 +98,40 @@ public abstract class BienImmobilier {
 
     /**
      * Ajoute une promesse de fin de vente au bien Immobilier necessite les parametres suivants
-     * @param acheteur le futur acheteur du bien
-     * @param prix le prix du bien 
+     *
+     * @param acheteur       le futur acheteur du bien
+     * @param prix           le prix du bien
      * @param adresseNotaire l'adresse du notaire qui signe la promesse de vente
-     * @param dateVente date de vente du bien immobilier
-     * @param fraisDeVente frais de vente
+     * @param dateVente      date de vente du bien immobilier
+     * @param fraisDeVente   frais de vente
      */
-    public void signerPromesseDeVente(Personne acheteur, double prix, String adresseNotaire, Date dateVente, Double fraisDeVente){
+    public void signerPromesseDeVente(Personne acheteur, double prix, String adresseNotaire, Date dateVente, Double fraisDeVente) {
         acheteur.AjouterBienAAcheter(this);
         promesseVente = new PromesseVente(acheteur, prix, adresseNotaire, dateVente, fraisDeVente);
     }
 
-    /** retourne la promesse de vente
+    /**
+     * retourne la promesse de vente
+     *
      * @return promesseVente
      */
     public PromesseVente getPromesseVente() {
         return promesseVente;
     }
 
-    /**retourne le vendeur/propriétaire du bien
-	 * @return
-	 */
-	public Personne getVendeur() {
-		return this.vendeur;
-	}
+    /**
+     * retourne le vendeur/propriétaire du bien
+     *
+     * @return
+     */
+    public Personne getVendeur() {
+        return this.vendeur;
+    }
 
-	public String toString() {
-		String s="Bien Immobillier\n";
-		s+=this.idBien+"\n"+this.prix+"\n"+this.localistation+"\n"+this.orientation+"\n"+this.vendeur+"\n";
-		return s;
-	}
+    public String toString() {
+        String s = "Bien Immobillier\n";
+        s += this.idBien + "\n" + this.prix + "\n" + this.localistation + "\n" + this.orientation + "\n" + this.vendeur + "\n";
+        return s;
+    }
     //rajout gestion vente
 }
