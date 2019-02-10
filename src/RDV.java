@@ -23,6 +23,7 @@ public class RDV {
     			this.vendeur=vend;
     			this.acheteur=achet;
     			this.typeRdv=typeRdv;
+    			System.out.println("on organise un RDV pour signer la vente");
     		}
     		break;
 
@@ -39,6 +40,7 @@ public class RDV {
     			if(!vendeur.equals(b.getVendeur())) {
     				throw new IllegalArgumentException("le vendeur doit faire partie des personnes concernné par le rendez vous de vente");
     			}
+    			System.out.println("on organise un RDV pour signer le mandat");
     			this.dateRDV=d;
     			this.bien=b;
     			this.vendeur=vendeur;
@@ -59,6 +61,7 @@ public class RDV {
     			if(acheteur.equals(b.getVendeur())) {
     				throw new IllegalArgumentException("Un vendeur n'as aucun interet a visiter son propre bien");
     			}
+    			System.out.println("on organise un RDV pour visiter");
     			this.dateRDV=d;
     			this.bien=b;
     			this.acheteur=acheteur;

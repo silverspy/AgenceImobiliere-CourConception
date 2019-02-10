@@ -125,7 +125,7 @@ public abstract class Personne {
     	return this.BienSoumis;
     }
     public String toString() {
-    	String s="Personne \n"+this.nom+","+this.adresse+","+this.eMail;
+    	String s="Personne \n"+this.nom+","+this.adresse+","+this.eMail+"\n"+this.voeux;
     	return s;
     }
 }
