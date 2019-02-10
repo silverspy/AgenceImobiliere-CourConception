@@ -15,7 +15,7 @@ public class RDV {
     	switch(typeRdv) {
     	//to Complete
     	case "Vente":
-    		if(vend!=null&&achet!=null) {
+    		if(vend==null||achet==null) {
     			throw new IllegalArgumentException("un Rendez vous de vente doit comporter un vendeur et un acheteur");
     		}else {
     			this.dateRDV=d;
@@ -35,10 +35,10 @@ public class RDV {
     	switch(typeRdv) {
     	
     	case "Mandat":
-    		if(vendeur!=null) {
+    		if(vendeur==null) {
     			throw new IllegalArgumentException("Un rendez vous pour signer un mandat ne fait intervenir que le vendeur");
     		}else {
-    			if(vendeur.equals(b.getVendeur())) {
+    			if(!vendeur.equals(b.getVendeur())) {
     				throw new IllegalArgumentException("le vendeur doit faire partie des personnes concernné par le rendez vous de vente");
     			}
     			this.dateRDV=d;
@@ -55,7 +55,7 @@ public class RDV {
     	switch(typeRdv) {
     	
     	case "Visite":
-    		if(acheteur!=null&&b!=null) {
+    		if(acheteur==null||b==null) {
     			throw new IllegalArgumentException("Une visite necessite un bien immobillier et un acheteur potentiels (non null)");
     		}else {
     			if(acheteur.equals(b.getVendeur())) {
