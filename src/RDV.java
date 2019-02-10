@@ -23,8 +23,6 @@ public class RDV {
     			this.vendeur=vend;
     			this.acheteur=achet;
     			this.typeRdv=typeRdv;
-    			//b.signerPromesseDeVente();
-
     		}
     		break;
 
@@ -90,5 +88,7 @@ public class RDV {
     void setLsPersonne(ArrayList<Personne> l){
         this.lsPersonne=l;
     }
-
+    public String toString() {
+    	return "RDV"+this.typeRdv;
+    }
 }

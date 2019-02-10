@@ -113,5 +113,10 @@ public abstract class BienImmobilier {
 		return this.vendeur;
 	}
 
+	public String toString() {
+		String s="Bien Immobillier\n";
+		s+=this.idBien+"\n"+this.prix+"\n"+this.localistation+"\n"+this.orientation+"\n"+this.vendeur+"\n";
+		return s;
+	}
     //rajout gestion vente
 }
