@@ -32,6 +32,8 @@ public class Agence {
         if (lBI.size() >= 1 && lRDV.size() >= 1) {
             this.listAnnonce = lA;
             this.listBienImmobillier = lBI;
+            this.listAcheteurPotentiel=new ArrayList<>();
+            this.listPersonneVendeur=new ArrayList<>();
             for (BienImmobilier b : lBI) {
                 this.listPersonneVendeur.add(b.getVendeur());
             }
