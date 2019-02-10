@@ -1,4 +1,5 @@
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -703,10 +704,7 @@ public class Agence {
     			}
     		}catch(ParseException e) {
     			e.printStackTrace();
-    		} catch (java.text.ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+    		}
     	}
 		return d;
 	}
@@ -880,10 +878,6 @@ public class Agence {
 		}
 		return d;
 	}
-
-        }
-        return d;
-    }
 
     /**
      * inscrit une personne Morale pour la vente d un appartement.
