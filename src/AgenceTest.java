@@ -84,54 +84,138 @@ public class AgenceTest {
     }
 
     @Test
-    public void decisionAcheteur() {
+    public void decisionAcheteur() { //Not implemented yet
+        try {
+            DateFormat df = new SimpleDateFormat("dd/MM/yy");
+            Date dg = df.parse("10/01/2020");
+            Date dd = df.parse("10/06/2019");
+            Personne p = new Physique("remi xavier","Lyon","0644589654","tt@tt.com");
+            BienImmobilier maison = new Maison(2, 10000, "Toulouse", dg, dd, "nord", p, 6, 2, 300, 150,"bois");
+                a.decisionAcheteur(p,maison);
+            assertTrue("RDV must contains 2 items but contain " + a.getRDV().size(),a.getRDV().size() == 2);
+        } catch (Exception e) {
+            fail(e.toString());
+        }
     }
 
     @Test
     public void inscriptionVenteAppartPersonneMorale() {
+        try {
+            DateFormat df = new SimpleDateFormat("dd/MM/yy");
+            Date dv = df.parse("10/01/2020");
+            Date dd = df.parse("10/06/2019");
+            Date dfm = df.parse("10/06/2019");
+            Date drdv = df.parse("10/06/2019");
+            a.inscriptionVenteTerrainPersonneMorale("Bastien didier", "Toulouse", "0655669988", "bastien@didier.com", "sarl", 0654455, 1000, "toulouse", dv, dd, "ouest", 1000, 500,dfm,drdv);
+            assertTrue("agence must have 2 BienImmobilier & 2 rdv ",a.getBienImmobillier().size() == 2 && a.getRDV().size() == 2);
+        } catch(Exception e){
+            fail(e.toString());
+        }
     }
 
     @Test
     public void inscriptionVenteMaisonPersonneMorale() {
+        try {
+            DateFormat df = new SimpleDateFormat("dd/MM/yy");
+            Date dv = df.parse("10/01/2020");
+            Date dd = df.parse("10/06/2019");
+            Date dfm = df.parse("10/06/2019");
+            Date drdv = df.parse("10/06/2019");
+            a.inscriptionVenteTerrainPersonneMorale("Bastien didier", "Toulouse", "0655669988", "bastien@didier.com", "sarl", 0654455, 1000, "toulouse", dv, dd, "ouest", 1000, 500,dfm,drdv);
+            assertTrue("agence must have 2 BienImmobilier & 2 rdv ",a.getBienImmobillier().size() == 2 && a.getRDV().size() == 2);
+        } catch(Exception e){
+            fail(e.toString());
+        }
     }
 
     @Test
     public void inscriptionVenteTerrainPersonnePhysique() {
+        try {
+            DateFormat df = new SimpleDateFormat("dd/MM/yy");
+            Date dv = df.parse("10/01/2020");
+            Date dd = df.parse("10/06/2019");
+            Date dfm = df.parse("10/06/2019");
+            Date drdv = df.parse("10/06/2019");
+            a.inscriptionVenteTerrainPersonneMorale("Bastien didier", "Toulouse", "0655669988", "bastien@didier.com", "sarl", 0654455, 1000, "toulouse", dv, dd, "ouest", 1000, 500,dfm,drdv);
+            assertTrue("agence must have 2 BienImmobilier & 2 rdv ",a.getBienImmobillier().size() == 2 && a.getRDV().size() == 2);
+        } catch(Exception e){
+            fail(e.toString());
+        }
     }
 
     @Test
     public void inscriptionVenteAppartPersonne() {
+        try {
+            DateFormat df = new SimpleDateFormat("dd/MM/yy");
+            Date dv = df.parse("10/01/2020");
+            Date dd = df.parse("10/06/2019");
+            Date dfm = df.parse("10/06/2019");
+            Date drdv = df.parse("10/06/2019");
+            a.inscriptionVenteTerrainPersonneMorale("Bastien didier", "Toulouse", "0655669988", "bastien@didier.com", "sarl", 0654455, 1000, "toulouse", dv, dd, "ouest", 1000, 500,dfm,drdv);
+            assertTrue("agence must have 2 BienImmobilier & 2 rdv ",a.getBienImmobillier().size() == 2 && a.getRDV().size() == 2);
+        } catch(Exception e){
+            fail(e.toString());
+        }
     }
 
     @Test
     public void inscriptionVenteMaisonPersonne() {
+        try {
+            DateFormat df = new SimpleDateFormat("dd/MM/yy");
+            Date dv = df.parse("10/01/2020");
+            Date dd = df.parse("10/06/2019");
+            Date dfm = df.parse("10/06/2019");
+            Date drdv = df.parse("10/06/2019");
+            a.inscriptionVenteTerrainPersonneMorale("Bastien didier", "Toulouse", "0655669988", "bastien@didier.com", "sarl", 0654455, 1000, "toulouse", dv, dd, "ouest", 1000, 500,dfm,drdv);
+            assertTrue("agence must have 2 BienImmobilier & 2 rdv ",a.getBienImmobillier().size() == 2 && a.getRDV().size() == 2);
+        } catch(Exception e){
+            fail(e.toString());
+        }
     }
 
     @Test
     public void prendreRDVVisite() {
+        try{
+            Personne p = new Physique("jean francois","Montauban","0566998877","test@test.com");
+            DateFormat df = new SimpleDateFormat("dd/MM/yy");
+            Date dg = df.parse("10/01/2020");
+            Date dd = df.parse("10/06/2019");
+            Date dc = df.parse("10/06/2019");
+            BienImmobilier maison = new Maison(2, 10000, "Toulouse", dg, dd, "nord", p, 6, 2, 300, 150,"bois");
+            a.prendreRDVVisite(p,maison,dc);
+            assertTrue("Agence must have 2 RDV",a.getRDV().size() == 2);
+        } catch (Exception e){
+            fail(e.toString());
+        }
     }
 
     @Test
     public void inscriptionPersonneInterresséTerrainPhysique() {
+        a.inscriptionPersonneInterresséTerrainPhysique("paul jacques","toulouse","0589665533","tt@tt.com",25000,"bordeaux",250);
     }
 
     @Test
     public void inscriptionPersonneInterresséAppartPhysique() {
+        a.inscriptionPersonneInterresséTerrainPhysique("paul jacques","toulouse","0589665533","tt@tt.com",25000,"bordeaux",250);
     }
 
     @Test
     public void inscriptionPersonneInterresséMaisonPhysique() {
+        a.inscriptionPersonneInterresséTerrainPhysique("paul jacques","toulouse","0589665533","tt@tt.com",25000,"bordeaux",250);
     }
 
     @Test
     public void inscriptionPersonneInterresséTerrainMorale() {
+        a.inscriptionPersonneInterresséTerrainPhysique("paul jacques","toulouse","0589665533","tt@tt.com",25000,"bordeaux",250);
     }
 
     @Test
     public void inscriptionPersonneInterresséAppartMorale() {
+        a.inscriptionPersonneInterresséTerrainPhysique("paul jacques","toulouse","0589665533","tt@tt.com",25000,"bordeaux",250);
     }
 
     @Test
     public void inscriptionPersonneInterresséMaisonMorale() {
+        a.inscriptionPersonneInterresséTerrainPhysique("paul jacques","toulouse","0589665533","tt@tt.com",25000,"bordeaux",250);
     }
 }
