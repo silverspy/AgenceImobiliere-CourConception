@@ -39,7 +39,7 @@ public abstract class Personne {
      * @param surfacesSol la surface au sol du bien souhaité
      */
     public void ajouterVoeux(String typeDeBien, String localisation, int prixSouhaité, double surfacesSol){
-
+        voeux = new Voeux(typeDeBien,localisation,prixSouhaité,surfacesSol);
     }
 
     
