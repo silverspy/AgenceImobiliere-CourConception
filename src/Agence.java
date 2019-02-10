@@ -178,7 +178,6 @@ public class Agence {
      */
     private void checkVoeux(BienImmobilier b) {
     	System.out.println("dans check voeux");
-		// TODO Auto-generated method stub
     	if(b instanceof Maison) {
     		System.out.println("lance check voeux maison");
     		checkVoeuxMaison(b);
@@ -628,7 +627,7 @@ public class Agence {
 	
 	/**
 	 * Fonction permettant de recuperer la saisie par l utilisateur d'un int superieur a 0 correspondant au string passe en parametre
-	 * @param string
+	 * @param string la categorie
 	 * @return k l'int saisie par l'utilisateur
 	 */
 	private int enterInt(String string) {
@@ -652,7 +651,7 @@ public class Agence {
      *
      * @param b le bien Immobillier
      * @see Agence#prendreRDVVisite(Personne, BienImmobilier, Date)
-     * @see Agence#entrerDate()
+     * @see Agence#entrerDate(String)
      */
 	private void checkVoeuxMaison(BienImmobilier b) {
 		// TODO Auto-generated method stub
@@ -718,7 +717,7 @@ public class Agence {
      *
      * @param b le bien Immobillier
      * @see Agence#prendreRDVVisite(Personne, BienImmobilier, Date)
-     * @see Agence#entrerDate()
+     * @see Agence#entrerDate(String)
      */
 	private void checkVoeuxAppart(BienImmobilier b) {
 		// TODO Auto-generated method stub
@@ -752,7 +751,7 @@ public class Agence {
      *
      * @param b le bien Immobillier
      * @see Agence#prendreRDVVisite(Personne, BienImmobilier, Date)
-     * @see Agence#entrerDate()
+     * @see Agence#entrerDate(String)
      */
     private void checkVoeuxTerrain(BienImmobilier b) {
 		// TODO Auto-generated method stub
@@ -786,7 +785,7 @@ public class Agence {
      * @param p l'acheteur
      * @param b le bien immobillier concerné
      * @see BienImmobilier#signerPromesseDeVente(Personne, double, String, Date, Double)
-     * @see Agence#prendreRDVAchat()
+     * @see Agence#prendreRDVAchat(Date, BienImmobilier, Personne, Personne, String)
      */
     public void decisionAcheteur(Personne p,BienImmobilier b) {
     	if(this.listAcheteurPotentiel.indexOf(p)!=-1) {
@@ -898,7 +897,6 @@ public class Agence {
      * @param dateDeVenteSouhaitee date de vente du bien souhaité
      * @param dateDispo            date a partir de laquelle le bien eest disponibe
      * @param orientation          l'orientation du bien
-     * @param vendeur              le vendeur du bien
      * @param nbPieces             le nombre de pieces de l'appartement
      * @param etages               l etage de l'appartement
      * @param charges              les charges de l'appartement
@@ -1034,7 +1032,6 @@ public class Agence {
      * @param dateDeVenteSouhaitee la date de vente souhaité du bien
      * @param dateDispo            la date a partir du quel le bien est disponible
      * @param orientation          l'orientation du bien
-     * @param vendeur              le vendeur du bien
      * @param nbPieces             le nombre de piece du bien
      * @param nbEtages             le nombre d'etage de la maison
      * @param surfaceSol           la surface au sol de la maison
