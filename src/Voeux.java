@@ -137,4 +137,8 @@ public class Voeux {
 	public void setPrixSouhaité(int prixSouhaité) {
 		this.prixSouhaité = prixSouhaité;
 	}
+	public String toString() {
+		String s="type de bien: "+this.typeDeBien+" prix: "+this.prixSouhaité+" localisation :"+this.localisation;
+		return s;
+	}
 }

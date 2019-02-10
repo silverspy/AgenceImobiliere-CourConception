@@ -249,6 +249,7 @@ public class Agence {
     			affich+=i+"- "+p.toString();
     			i++;
     		}
+    		Personne choosen=lsP.get(i-1);
     		boolean ok=false;
     		while(ok==false) {
     			int rep=this.enterInt("un nombre entre 1 et "+i);
@@ -258,16 +259,119 @@ public class Agence {
     		}
     		ok=false;
     		while(ok==false) {
+    			System.out.println("selectionner le type de bien immobilier que vous souhaitez \n appart/maison/terrain");
     			Scanner sc=new Scanner(System.in);
     			String typeVoeux=sc.nextLine();
     			switch (typeVoeux) {
 				case "appart":
+					String loca=this.enterString("localisation");
+					int prix=this.enterInt("prix");
+					int nbPieces=this.enterInt("nombre de pieces ");
+					choosen.AjoutVoeux(new Voeux("appart", loca, prix, nbPieces));
+					System.out.println("le voeux de "+choosen.getNom()+"a ete mis a jour");
+					ok=true;
+					if(this.listBienImmobillier.size()>0) {
+			    		for(BienImmobilier b:this.listBienImmobillier) {
+			    			if(this.listBienVendu.indexOf(b)==-1)
+			    				this.checkVoeux(b);
+			    		}
+			    	}
 					
 					break;
-
+				case "maison":
+					String local=this.enterString("localisation");
+					int prix1=this.enterInt("prix");
+					int nbPieces1=this.enterInt("nombre de pieces ");
+					double Surface=this.entrerFraisDeVente("Surface au sol souhaité :");
+					choosen.AjoutVoeux(new Voeux("maison", local, prix1, nbPieces1,Surface));
+					System.out.println("le voeux de "+choosen.getNom()+"a ete mis a jour");
+					ok=true;
+					if(this.listBienImmobillier.size()>0) {
+			    		for(BienImmobilier b:this.listBienImmobillier) {
+			    			if(this.listBienVendu.indexOf(b)==-1)
+			    				this.checkVoeux(b);
+			    		}
+			    	}
+					break;
+				case "terrain":
+					String local1=this.enterString("localisation du bien souhaité:");
+					int prix12=this.enterInt("prix souhaité :");
+					double Surface2=this.entrerFraisDeVente("Surface au sol souhaité :");
+					choosen.AjoutVoeux(new Voeux("terrain", local1, prix12,Surface2));
+					System.out.println("le voeux de "+choosen.getNom()+"a ete mis a jour");
+					ok=true;
+					if(this.listBienImmobillier.size()>0) {
+			    		for(BienImmobilier b:this.listBienImmobillier) {
+			    			if(this.listBienVendu.indexOf(b)==-1)
+			    				this.checkVoeux(b);
+			    		}
+			    	}
+					break;
 				default:
+					System.out.println("selectionner le type de bien immobilier que vous souhaitez \n appart/maison/terrain");
 					break;
 				}
+    		}
+    	}else {
+    		if(lsP.size()==1) {
+    			Personne chosen=lsP.get(0);
+    			boolean ok=false;
+        		while(ok==false) {
+        			System.out.println("selectionner le type de bien immobilier que vous souhaitez \n appart/maison/terrain");
+        			Scanner sc=new Scanner(System.in);
+        			String typeVoeux=sc.nextLine();
+        			switch (typeVoeux) {
+    				case "appart":
+    					String loca=this.enterString("localisation");
+    					int prix=this.enterInt("prix");
+    					int nbPieces=this.enterInt("nombre de pieces ");
+    					chosen.AjoutVoeux(new Voeux("appart", loca, prix, nbPieces));
+    					System.out.println("le voeux de "+chosen.getNom()+"a ete mis a jour");
+    					ok=true;
+    					if(this.listBienImmobillier.size()>0) {
+    			    		for(BienImmobilier b:this.listBienImmobillier) {
+    			    			if(this.listBienVendu.indexOf(b)==-1)
+    			    				this.checkVoeux(b);
+    			    		}
+    			    	}
+    					
+    					break;
+    				case "maison":
+    					String local=this.enterString("localisation");
+    					int prix1=this.enterInt("prix");
+    					int nbPieces1=this.enterInt("nombre de pieces ");
+    					double Surface=this.entrerFraisDeVente("Surface au sol souhaité :");
+    					chosen.AjoutVoeux(new Voeux("maison", local, prix1, nbPieces1,Surface));
+    					System.out.println("le voeux de "+chosen.getNom()+"a ete mis a jour");
+    					ok=true;
+    					if(this.listBienImmobillier.size()>0) {
+    			    		for(BienImmobilier b:this.listBienImmobillier) {
+    			    			if(this.listBienVendu.indexOf(b)==-1)
+    			    				this.checkVoeux(b);
+    			    		}
+    			    	}
+    					break;
+    				case "terrain":
+    					String local1=this.enterString("localisation du bien souhaité:");
+    					int prix12=this.enterInt("prix souhaité :");
+    					double Surface2=this.entrerFraisDeVente("Surface au sol souhaité :");
+    					chosen.AjoutVoeux(new Voeux("terrain", local1, prix12,Surface2));
+    					System.out.println("le voeux de "+chosen.getNom()+"a ete mis a jour");
+    					ok=true;
+    					if(this.listBienImmobillier.size()>0) {
+    			    		for(BienImmobilier b:this.listBienImmobillier) {
+    			    			if(this.listBienVendu.indexOf(b)==-1)
+    			    				this.checkVoeux(b);
+    			    		}
+    			    	}
+    					break;
+    				default:
+    					System.out.println("selectionner le type de bien immobilier que vous souhaitez \n appart/maison/terrain");
+    					break;
+    				}
+        		}
+    		}else {
+    			System.out.println("aucun acheteur correspondant");
     		}
     	}
 		
@@ -651,8 +755,6 @@ public class Agence {
     private void checkVoeuxTerrain(BienImmobilier b) {
 		// TODO Auto-generated method stub
     	Terrain t=(Terrain) b;
-    	System.out.println("bien immobillier "+b.toString());
-    	System.out.println("apres parse terrain"+t.toString());
     	int borneBasse=0;
     	int borneHaute=0;
     	Voeux v=new Voeux();
@@ -809,7 +911,7 @@ public class Agence {
      * @see Agence#checkVoeux(BienImmobilier)
      */
 	void inscriptionVenteAppartPersonneMorale(String nom,String adresse,String tel,String mail,String formJuridique, int siren, int prix, String localistation, Date dateDeVenteSouhaitee, Date dateDispo, String orientation, int nbPieces, int etages, double charges,Date dateFinMandat,Date dateRDV){
-    	Personne p=new Morale(nom,adresse,tel,mail,formJuridique,siren);
+		Personne p=new Morale(nom,adresse,tel,mail,formJuridique,siren);
     	listPersonneVendeur.add(p);
     	this.lastId=this.lastId+1;
     	BienImmobilier b=new Appart(this.lastId,prix, localistation,dateDeVenteSouhaitee,dateDispo,orientation,p,nbPieces,etages,charges);
