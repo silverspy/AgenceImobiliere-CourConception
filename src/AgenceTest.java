@@ -61,7 +61,7 @@ public class AgenceTest {
             Personne p = new Physique("pierre jean","bordeaux","0644559988","tt@tt.com");
             BienImmobilier maison = new Maison(2, 10000, "Toulouse", dv, dd, "nord", p, 6, 2, 300, 150,"bois");
             a.prendreRDVMandat(dv,maison,maison.vendeur,dg);
-            assertTrue("Erreur listrdv devrait avoir 2 elements",a.getRDV().size() == 2);
+            assertTrue("Erreur listRDV devrait avoir 2 elements",a.getRDV().size() == 2);
         } catch (Exception e){
             fail(e.toString());
         }
@@ -69,6 +69,17 @@ public class AgenceTest {
 
     @Test
     public void inscriptionVenteTerrainPersonneMorale() {
+        try {
+            DateFormat df = new SimpleDateFormat("dd/MM/yy");
+            Date dd = df.parse("10/02/2019");
+            Date dv = df.parse("10/01/2020");
+            Date dm = df.parse("11/01/2019");
+            Date drdv = df.parse("10/02/2019");
+            a.inscriptionVenteTerrainPersonneMorale("jean pascal","paris","0644163256","tt@tt.com","sociétée",12345,2000,"bordeaux",dd,dv,"Ouest",200,50,dm,drdv);
+            assertTrue("BienImmobilier must have 2 items",a.getBienImmobillier().size() == 2);
+        } catch (Exception e){
+            fail(e.toString());
+        }
 
     }
 
