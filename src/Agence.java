@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+
 /**
  * Classe Agence immobiliere
  * une agence est constitue d une liste de RDV,d annonce,de bien a vendre ainsi que d'une liste
@@ -880,10 +882,6 @@ public class Agence {
 		}
 		return d;
 	}
-
-        }
-        return d;
-    }
 
     /**
      * inscrit une personne Morale pour la vente d un appartement.
