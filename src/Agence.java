@@ -188,7 +188,7 @@ public class Agence {
     			this.menuInscriptionVente();
     			break;
     		case "A":
-    			//this.menuAchat();
+    			this.menuAchat();
     			break;
     		case "Q":
     			fin=true;
@@ -200,7 +200,103 @@ public class Agence {
     		System.out.println(this.toString());
     	}
     }
-    private void menuInscriptionVente() {
+    private void menuAchat() {
+		// TODO Auto-generated method stub
+    	System.out.println("Bienvenue sur le menu d'Inscription a la vente");
+    	String menu="**********************\n";
+    	menu+="Mt- Inscription d une personne morale interresée par un terrain\n";
+    	menu+="Mm- Inscription d une personne morale interressée par  une maison\n";
+    	menu+="Ma- Inscription d une personne morale interressee par un Appartement\n";
+    	menu+="Pt- Inscription d'une personne Physique interressee par un terrain\n";
+    	menu+="Pa- Inscription d'une personne Physique interressee par un appartement\n";
+    	menu+="Pm- Inscription d'une personne Physique interresse par une maison\n";
+    	menu+="Q- Quitter\n";
+    	
+    	boolean fin=false;
+    	while(fin==false) {
+    		System.out.println(menu);
+    		Scanner sc=new Scanner(System.in);
+    		String str=sc.nextLine();
+    		String nom,adresse,tel,mail,formJuridique,localisation;
+    		int siren,prix,nbPieces;
+    		double charge,SurfacesSol,longueurFacade;
+    		switch(str) {
+    		case "Mt":
+    			nom=this.enterString("nom");
+    			adresse=this.enterString("adresse");
+    			tel=this.enterString("telephone");
+    			mail=this.enterString("mail");
+    			formJuridique=this.enterString("Forme Juridique");
+    			siren=this.enterInt("numero siren");
+    			prix=this.enterInt("prix");
+    			localisation=this.enterString("localisation");
+    			SurfacesSol=this.entrerFraisDeVente("Surface au sol");
+    			this.inscriptionPersonneInterresséTerrainMorale(nom, adresse, tel, mail, formJuridique, siren, prix, localisation, SurfacesSol);
+    			break;
+    		case "Ma":
+    			nom=this.enterString("nom");
+    			adresse=this.enterString("adresse");
+    			tel=this.enterString("telephone");
+    			mail=this.enterString("mail");
+    			formJuridique=this.enterString("Forme Juridique");
+    			siren=this.enterInt("numero siren");
+    			prix=this.enterInt("prix");
+    			nbPieces=this.enterInt("Nombre de pieces");
+    			localisation=this.enterString("localisation");
+    			this.inscriptionPersonneInterresséAppartMorale(nom, adresse, tel, mail, formJuridique, siren, prix, localisation, nbPieces);
+    			break;
+    		case "Pt":
+    			nom=this.enterString("nom");
+    			adresse=this.enterString("adresse");
+    			tel=this.enterString("telephone");
+    			mail=this.enterString("email");
+    			prix=this.enterInt("prix du bien");
+    			localisation=this.enterString("localisation");
+    			SurfacesSol=this.entrerFraisDeVente("Surface au sol");
+    			this.inscriptionPersonneInterresséTerrainPhysique(nom, adresse, tel, mail, prix, localisation, SurfacesSol);
+    			break;
+    		case "Mm":
+    			nom=this.enterString("nom");
+    			adresse=this.enterString("adresse");
+    			tel=this.enterString("telephone");
+    			mail=this.enterString("mail");
+    			formJuridique=this.enterString("Forme Juridique");
+    			siren=this.enterInt("numero siren");
+    			prix=this.enterInt("prix");
+    			nbPieces=this.enterInt("Nombre de pieces");
+    			localisation=this.enterString("localisation");
+    			SurfacesSol=this.entrerFraisDeVente("Surface de sol");
+    			this.inscriptionPersonneInterresséMaisonMorale(nom, adresse, tel, mail, formJuridique, siren, prix, localisation, nbPieces, SurfacesSol);
+    			break;
+    		case "Pa":
+    			nom=this.enterString("nom");
+    			adresse=this.enterString("adresse");
+    			tel=this.enterString("telephone");
+    			mail=this.enterString("adresse email");
+    			prix=this.enterInt("prix du bien");
+    			localisation=this.enterString("localisation du bien");
+    			nbPieces=this.enterInt("nombre de pieces");
+    			this.inscriptionPersonneInterresséAppartPhysique(nom, adresse, tel, mail, prix, localisation, nbPieces);
+    			break;
+    		case "Pm":
+    			nom=this.enterString("nom");
+    			adresse=this.enterString("adresse");
+    			tel=this.enterString("telephone");
+    			mail=this.enterString("adresse email");
+    			prix=this.enterInt("prix du bien");
+    			localisation=this.enterString("localisation du bien");
+    			nbPieces=this.enterInt("nombre de pieces");
+    			SurfacesSol=this.entrerFraisDeVente("Surface au sol");
+    			this.inscriptionPersonneInterresséMaisonPhysique(nom, adresse, tel, mail, prix, localisation, nbPieces, SurfacesSol);
+    			break;
+    		default:
+    			System.out.println("error rentrez une des lettres du menu");
+    		}
+    		System.out.println(this.toString());
+    	}
+    }
+
+	private void menuInscriptionVente() {
 		// TODO Auto-generated method stub
     	System.out.println("Bienvenue sur le menu d'Inscription a la vente");
     	String menu="**********************\n";
